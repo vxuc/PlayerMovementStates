@@ -9,11 +9,13 @@ public class PlayerRunState : PlayerBaseState
 
     public override void EnterState()
     {
+        Debug.Log("ENTER RUNNING");
         ctx.MovementSpeed = ctx.SprintSpeed;
     }
 
     public override void ExitState()
     {
+        Debug.Log("EXIT RUNNING");
     }
 
     public override void InitializeSubState()
@@ -22,6 +24,7 @@ public class PlayerRunState : PlayerBaseState
 
     public override void UpdateState()
     {
+        Debug.Log("RUNNING");
         CheckSwitchStates();
     }
 

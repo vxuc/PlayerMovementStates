@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerBaseState
 {
     bool jump = false;
+
     public PlayerGroundedState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base(currentContext, playerStateFactory) {
         isRootState = true;
@@ -18,10 +19,12 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void ExitState()
     {
+        Debug.Log("EXIT GROUNDED");
     }
 
     public override void InitializeSubState()
     {
+        //init substates
         if (!ctx.IsMoving && !ctx.IsSprinting)
             SetSubState(factory.Idle());
         else if (ctx.IsMoving && !ctx.IsSprinting)

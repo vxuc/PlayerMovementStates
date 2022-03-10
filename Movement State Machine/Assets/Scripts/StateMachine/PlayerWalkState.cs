@@ -9,11 +9,13 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void EnterState()
     {
+        Debug.Log("ENTER WALKING");
         ctx.MovementSpeed = ctx.WalkSpeed;
     }
 
     public override void ExitState()
     {
+        Debug.Log("EXIT WALKING");
     }
 
     public override void InitializeSubState()
@@ -38,5 +40,4 @@ public class PlayerWalkState : PlayerBaseState
         else if (ctx.IsMoving && ctx.IsSprinting)
             SwitchState(factory.Run());
     }
-
 }

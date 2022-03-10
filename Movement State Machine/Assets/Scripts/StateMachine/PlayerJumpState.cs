@@ -11,11 +11,13 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
+        Debug.Log("ENTER JUMPING");
         Jump();
     }
 
     public override void ExitState()
     {
+        Debug.Log("EXIT JUMPING");
     }
 
     public override void InitializeSubState()
@@ -24,6 +26,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void UpdateState()
     {
+        Debug.Log("JUMPING");
         CheckSwitchStates();
     }
 
@@ -42,6 +45,7 @@ public class PlayerJumpState : PlayerBaseState
 
     void Jump()
     {
+        //do the jump
         ctx.Rigidbody.velocity = new Vector3(ctx.Rigidbody.velocity.x, 0f, ctx.Rigidbody.velocity.z);
         ctx.Rigidbody.AddForce(ctx.Transform.up * ctx.JumpForce, ForceMode.Impulse);
     }

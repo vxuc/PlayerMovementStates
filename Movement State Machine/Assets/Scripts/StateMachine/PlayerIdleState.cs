@@ -9,10 +9,12 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void EnterState()
     {
+        Debug.Log("ENTER IDLE");
     }
 
     public override void ExitState()
     {
+        Debug.Log("EXIT IDLE");
     }
 
     public override void InitializeSubState()

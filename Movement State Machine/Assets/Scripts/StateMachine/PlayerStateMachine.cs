@@ -22,11 +22,15 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] float jumpForce;
     public KeyCode jumpKey;
 
+
     float horizontalInput;
     float verticalInput;
 
     Vector3 movementDirection;
     Rigidbody rb;
+
+    public PlayerBaseState currentState;
+    public PlayerStateFactory states;
 
     //getters & setters
     public Rigidbody Rigidbody { get { return rb; } }
@@ -40,9 +44,6 @@ public class PlayerStateMachine : MonoBehaviour
     public float WalkSpeed { get { return walkSpeed; } }
     public float SprintSpeed { get { return sprintSpeed; } }
     public float MovementSpeed { get { return movementSpeed; } set { movementSpeed = value; } }
-
-    public PlayerBaseState currentState;
-    public PlayerStateFactory states;
 
     // Start is called before the first frame update
     void Start()
@@ -58,18 +59,25 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //IsGrounded
+        //update isGrounded
         isGrounded = HandleGrounded();
 
+        //update inputs
         HandleInput();
+
+        //update max speed
         SpeedControl();
 
+        //update current state
         currentState.UpdateStates();
     }
 
     private void FixedUpdate()
     {
+        //process movement
         Move();
+
+        //fixed update current state
         currentState.FixedUpdateStates();
     }
 
