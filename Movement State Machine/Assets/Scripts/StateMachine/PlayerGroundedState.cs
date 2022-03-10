@@ -13,7 +13,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("GROUNDED");
+        Debug.Log("ENTER GROUNDED");
     }
 
     public override void ExitState()
